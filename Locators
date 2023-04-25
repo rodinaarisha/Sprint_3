@@ -1,0 +1,21 @@
+FORM_FOR_FILLING=[By.CLASS_NAME, "Auth_login__3hAey"] #Форма для заполнения
+FIELD_REGISTRATION_NAME=[By.XPATH, './/fieldset[1]//input'] #Поле Имя в форме регистрации
+FIELD_REGISTRATION_LOGIN=[By.XPATH, './/fieldset[2]//input'] #Поле email в форме регистрации
+FILED_REGISTRATION_PASSWORD=[By.XPATH, ".//input[@class='text input__textfield text_type_main-default' and @type='password']"] #Поле пароля в форме регистрации
+BUTTON_REGISTRATION=[By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']"] #Кнопка "Зарегистрироваться "
+ISSUE_FOR_INCORRECT_PASSWORD=[By.XPATH, ".//p[@class='input__error text_type_main-default']"] #Ошибка для некорректного пароля
+BUTTON_INPUT=[By.XPATH,".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']"] # Кнопка Войти
+BUTTON_PERSONAL_ACCOUNT=[By.LINK_TEXT, 'Личный Кабинет'] #Кнопка Личный кабинет
+BUTTON_EXIT=[.//button[@class='Account_button__14Yp3 text text_type_main-medium text_color_inactive']] #Кнопка Выход на странице Личного кабинета
+BUTTON_HISTORY_SHOP=[.//li[@class='Account_listItem__35dAP']/a[@class='Account_link__2ETsJ text text_type_main-medium text_color_inactive']] #Кнопка история заказов на странице Личного кабинета
+TITLE_ENTRY=[By.XPATH, ".//div[@class='Auth_login__3hAey']/h2"] #Заголовок ВХОД
+BUTTON_CONSTRUСTOR=[By.LINK_TEXT, 'Конструктор'] #Кнопка Конструктор
+TITLE_COLLECT_BURGER=[By.XPATH, ".//section[@class='BurgerIngredients_ingredients__1N8v2']/h1"] #Заголовок соберите бургер
+BUTTON_STELLAR_BURGERS=[By.XPATH, ".//div[@class='AppHeader_header__logo__2D0X2']/a"] #Кнопка Stellar Burgers
+BUTTON_PLACE_AN_ORDER=[By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text()='Оформить заказ']] #Кнопка оформить заказ
+BUTTON_SAUCES=[By.XPATH, ".//span[@class='text text_type_main-default' and text()='Соусы']"] #Кнопка Соусы
+EXAMPLE_SAUCE_SPICY_X=[By.XPATH, ".//p[@class='BurgerIngredient_ingredient__text__yp3dH' and text()='Соус Spicy-X']] #Соус Spicy-X
+BUTTON_FILLINGS=[By.XPATH, ".//span[@class='text text_type_main-default' and text()='Начинки']"] #Кнопка Начинки
+EXAMPLE_FILLINGS_STEAK=[By.XPATH, ".//p[@class='BurgerIngredient_ingredient__text__yp3dH' and text()='Говяжий метеорит (отбивная)']"] #Говяжий метеорит (отбивная)
+BUTTON_BREADS=[By.XPATH, ".//span[@class='text text_type_main-default' and text()='Булки']"] #Кнопка Булки
+EXAMPLE_BREADS_R2_D3=[By.XPATH, ".//p[@class='BurgerIngredient_ingredient__text__yp3dH' and text()='Флюоресцентная булка R2-D3']] #Флюоресцентная булка R2-D3
