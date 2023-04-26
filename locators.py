@@ -18,8 +18,11 @@ class TestLocators:
     button_stellar_burgers = By.XPATH, ".//div[@class='AppHeader_header__logo__2D0X2']/a"  # Кнопка Stellar Burgers
     button_place_an_order = By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text()='Оформить заказ']"  # Кнопка оформить заказ
     button_sauces = By.XPATH, ".//span[@class='text text_type_main-default' and text()='Соусы']"  # Кнопка Соусы
+    title_sauce = By.XPATH, ".//h2[@class='text text_type_main-medium mb-6 mt-10' and text()='Соусы']" #Название Соусы
     example_sauce_spicy_x = By.XPATH, ".//p[@class='BurgerIngredient_ingredient__text__yp3dH' and text()='Соус Spicy-X']"  # Соус Spicy-X
     button_fillings = By.XPATH, ".//span[@class='text text_type_main-default' and text()='Начинки']"  # Кнопка Начинки
+    title_fillings = By.XPATH, ".//h2[@class='text text_type_main-medium mb-6 mt-10' and text()='Начинки']"  # Название Начинки
     example_fillings_steak = By.XPATH, ".//p[@class='BurgerIngredient_ingredient__text__yp3dH' and text()='Говяжий метеорит (отбивная)']"  # Говяжий метеорит (отбивная)
     button_breads = By.XPATH, ".//span[@class='text text_type_main-default' and text()='Булки']"   # Кнопка Булки
+    title_breads = By.XPATH, ".//h2[@class='text text_type_main-medium mb-6 mt-10' and text()='Булки']"  # Название Булки
     example_breads_r2_d3 = By.XPATH, ".//p[@class='BurgerIngredient_ingredient__text__yp3dH' and text()='Флюоресцентная булка R2-D3']"  # Флюоресцентная булка R2-D3
