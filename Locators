@@ -1,6 +1,6 @@
 FORM_FOR_FILLING=[By.CLASS_NAME, "Auth_login__3hAey"] #Форма для заполнения
-FIELD_REGISTRATION_NAME=[By.XPATH, './/fieldset[1]//input'] #Поле Имя в форме регистрации
-FIELD_REGISTRATION_LOGIN=[By.XPATH, './/fieldset[2]//input'] #Поле email в форме регистрации
+field_registration_name=[By.XPATH, "//label[text()='Имя']/following-sibling::input")] #Поле Имя в форме регистрации
+field_registration_login=[By.XPATH, "//label[text()='Email']/following-sibling::input"] #Поле email в форме регистрации
 FILED_REGISTRATION_PASSWORD=[By.XPATH, ".//input[@class='text input__textfield text_type_main-default' and @type='password']"] #Поле пароля в форме регистрации
 BUTTON_REGISTRATION=[By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']"] #Кнопка "Зарегистрироваться "
 ISSUE_FOR_INCORRECT_PASSWORD=[By.XPATH, ".//p[@class='input__error text_type_main-default']"] #Ошибка для некорректного пароля
