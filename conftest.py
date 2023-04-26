@@ -1,16 +1,13 @@
 import pytest
+from selenium import webdriver
 
-@pytest.fixture
-def name():
-    name ='Test'
-    return name
+@pytest.fixture(scope='function')
+def driver():
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--window-size=1000,992')
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.get("https://stellarburgers.nomoreparties.site/")
 
-@pytest.fixture
-def email():
-    email = 'arina_rodina_09@yandex.ru'
-    return email
+    yield driver
 
-@pytest.fixture
-def password():
-    password = '123456'
-    return password
+    driver.quit()
