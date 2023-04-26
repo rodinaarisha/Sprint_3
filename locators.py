@@ -11,6 +11,9 @@ class TestLocators:
     field_email = By.XPATH, "//label[text()='Email']/following-sibling::input"  # Поле email на экране входа
     button_input = By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']"  # Кнопка Войти
     button_input_registration = By.LINK_TEXT, 'Войти'  # Кнопка "Войти" на странице регистрации
+    button_input_to_account = By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text()='Войти в аккаунт']"  # Кнопка Войти в аккаунт
+    return_password = By.XPATH, ".//a[@class='Auth_link__1fOlj' and text()='Восстановить пароль']"  # Кнопка Восстановить пароль
+    button_input_return_password = By.XPATH, ".//a[@class='Auth_link__1fOlj' and text()='Войти']"  # Кнопка Войти на странице восстановить пароль
     button_personal_account = By.LINK_TEXT, 'Личный Кабинет'  # Кнопка Личный кабинет
     button_exit = By.XPATH, ".//button[@class='Account_button__14Yp3 text text_type_main-medium text_color_inactive']"  # Кнопка Выход на странице Личного кабинета
     button_history_shop = (By.XPATH, ".//li[@class='Account_listItem__35dAP']/a[@class='Account_link__2ETsJ text text_type_main-medium text_color_inactive']")  # Кнопка история заказов на странице Личного кабинета

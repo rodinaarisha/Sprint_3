@@ -1,75 +1,48 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+from locators import TestLocators
 
 
-def test_input_login_via_the_button_in_the_registration_form(email, password):
-    chrome_options = webdriver.ChromeOptions()
-    #chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--window-size=1000,992')
-    driver = webdriver.Chrome(options=chrome_options)
-    driver.get("https://stellarburgers.nomoreparties.site/register")
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.CLASS_NAME, "Auth_login__3hAey")))
-    input_from_registration = driver.find_element(By.LINK_TEXT, 'Войти')
-    input_from_registration.click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.CLASS_NAME, "Auth_login__3hAey")))
-    driver.find_element(By.XPATH, ".//fieldset[1]//input").send_keys(email)
-    driver.find_element(By.XPATH, ".//input[@class='text input__textfield text_type_main-default' and @type='password']").send_keys(password)
-    driver.find_element(By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']").click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text()='Оформить заказ']")))
-    order_button = driver.find_element(By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text()='Оформить заказ']")
-    assert order_button.text == 'Оформить заказ'
-    driver.quit()
+class TestInput:
 
+    def test_input_login_via_the_button_in_the_registration_form(self, driver):
+        driver.get("https://stellarburgers.nomoreparties.site/register")
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.form_for_filling))
+        driver.find_element(*TestLocators.button_input_registration).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.form_for_filling))
+        driver.find_element(*TestLocators.field_registration_login).send_keys('arina_rodina_09@yandex.ru')
+        driver.find_element(*TestLocators.field_registration_password).send_keys('123456')
+        driver.find_element(*TestLocators.button_input).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.button_place_an_order))
+        order_button = driver.find_element(*TestLocators.button_place_an_order)
+        assert order_button.text == 'Оформить заказ', 'Кнопка "Оформить" заказ должна отображаться после авторизации'
 
-def test_input_login_via_button_personal_account(email,password):
-    chrome_options = webdriver.ChromeOptions()
-    #chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--window-size=1000,992')
-    driver = webdriver.Chrome(options=chrome_options)
-    driver.get("https://stellarburgers.nomoreparties.site/")
-    personal_account = driver.find_element(By.LINK_TEXT, 'Личный Кабинет')
-    personal_account.click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.CLASS_NAME, "Auth_login__3hAey")))
-    driver.find_element(By.XPATH, ".//fieldset[1]//input").send_keys(email)
-    driver.find_element(By.XPATH, ".//input[@class='text input__textfield text_type_main-default' and @type='password']").send_keys(password)
-    driver.find_element(By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']").click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text()='Оформить заказ']")))
-    order_button = driver.find_element(By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text()='Оформить заказ']")
-    assert order_button.text == 'Оформить заказ'
-    driver.quit()
+    def test_input_login_via_button_personal_account(self, driver):
+        driver.find_element(*TestLocators.button_personal_account).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.form_for_filling))
+        driver.find_element(*TestLocators.field_registration_login).send_keys('arina_rodina_09@yandex.ru')
+        driver.find_element(*TestLocators.field_registration_password).send_keys('123456')
+        driver.find_element(*TestLocators.button_input).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.button_place_an_order))
+        order_button = driver.find_element(*TestLocators.button_place_an_order)
+        assert order_button.text == 'Оформить заказ', 'Кнопка "Оформить" заказ должна отображаться после авторизации'
 
+    def test_input_login_via_button_input_to_account(self, driver):
+        driver.find_element(*TestLocators.button_input_to_account).click()
+        driver.find_element(*TestLocators.field_registration_login).send_keys('arina_rodina_09@yandex.ru')
+        driver.find_element(*TestLocators.field_registration_password).send_keys('123456')
+        driver.find_element(*TestLocators.button_input).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.button_place_an_order))
+        order_button = driver.find_element(*TestLocators.button_place_an_order)
+        assert order_button.text == 'Оформить заказ', 'Кнопка "Оформить" заказ должна отображаться после авторизации'
 
-def test_input_login_via_button_personal_account(email, password):
-    chrome_options = webdriver.ChromeOptions()
-    #chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--window-size=1000,992')
-    driver = webdriver.Chrome(options=chrome_options)
-    driver.get("https://stellarburgers.nomoreparties.site/")
-    driver.find_element(By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text()='Войти в аккаунт']").click()
-    driver.find_element(By.XPATH, ".//fieldset[1]//input").send_keys(email)
-    driver.find_element(By.XPATH, ".//input[@class='text input__textfield text_type_main-default' and @type='password']").send_keys(password)
-    driver.find_element(By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']").click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text()='Оформить заказ']")))
-    order_button = driver.find_element(By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text()='Оформить заказ']")
-    assert order_button.text == 'Оформить заказ'
-    driver.quit()
-
-
-def test_input_login_via_password_recovery_button(email, password):
-    chrome_options = webdriver.ChromeOptions()
-    #chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--window-size=1000,992')
-    driver = webdriver.Chrome(options=chrome_options)
-    driver.get("https://stellarburgers.nomoreparties.site/")
-    driver.find_element(By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text()='Войти в аккаунт']").click()
-    driver.find_element(By.XPATH, ".//a[@class='Auth_link__1fOlj' and text()='Восстановить пароль']").click()
-    driver.find_element(By.XPATH, ".//a[@class='Auth_link__1fOlj' and text()='Войти']").click()
-    driver.find_element(By.XPATH, './/fieldset[1]//input').send_keys(email)
-    driver.find_element(By.XPATH, ".//input[@class='text input__textfield text_type_main-default' and @type='password']").send_keys(password)
-    driver.find_element(By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']").click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text()='Оформить заказ']")))
-    order_button = driver.find_element(By.XPATH, ".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text()='Оформить заказ']")
-    assert order_button.text == 'Оформить заказ'
-    driver.quit()
+    def test_input_login_via_password_recovery_button(self, driver):
+        driver.find_element(*TestLocators.button_input_to_account).click()
+        driver.find_element(*TestLocators.return_password).click()
+        driver.find_element(*TestLocators.button_input_return_password).click()
+        driver.find_element(*TestLocators.field_registration_login).send_keys('arina_rodina_09@yandex.ru')
+        driver.find_element(*TestLocators.field_registration_password).send_keys('123456')
+        driver.find_element(*TestLocators.button_input).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.button_place_an_order))
+        order_button = driver.find_element(*TestLocators.button_place_an_order)
+        assert order_button.text == 'Оформить заказ', 'Кнопка "Оформить" заказ должна отображаться после авторизации'
